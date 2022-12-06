@@ -1,6 +1,6 @@
 export const Routes = {
+  signin: "/",
   signup: "/sign-up",
-  signin: "/sign-in",
   dashboard: "/dashboard",
   transactions: "/transactions",
   agents: "/agents",

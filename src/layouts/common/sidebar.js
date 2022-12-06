@@ -22,8 +22,6 @@ function Sidebar() {
       title: "Transaction",
       link: Routes.transactions,
     },
-    { icon: <FillUserAltIcon />, title: "Users", link: Routes.users },
-    { icon: <PeopleAltIcon />, title: "Agents", link: Routes.agents },
   ];
 
   const changeRoute = (title, link) => {
@@ -33,7 +31,7 @@ function Sidebar() {
   return (
     <div className="w-52 xl:w-64 h-screen fixed z-20">
       <div className="py-4 mb-8 xl:mb-10 xl:py-6 px-8 xl:px-10 start w-[140px] xl:w-[180px] h-auto">
-        {/* <Image src={LightLogo} alt="LifeSaver" /> */}
+        {/* <Image src={LightLogo} alt="Pump" /> */}
       </div>
 
       <ul className="w-full  space-y-7 xl:space-y-8 px-7 xl:px-9">

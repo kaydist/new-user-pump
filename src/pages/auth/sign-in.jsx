@@ -54,7 +54,7 @@ export default function SignIn() {
   });
 
   if (isLoginingStatus === "success") {
-    navigate(Routes.transactions);
+    navigate(Routes.dashboard);
   }
 
   useEffect(() => {
@@ -90,7 +90,7 @@ export default function SignIn() {
             }}
             onBlur={formik.handleBlur}
             value={formik.values.email}
-            placeholder="Superadmin@Lifesaver.com"
+            placeholder="admin@Pump.com"
             className="input password bg-inherit min-w-full"
           />
 

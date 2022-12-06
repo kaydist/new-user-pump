@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { Routes } from "../routes/Routes";
 import Sidebar from "./common/sidebar";
 
 function AppLayout({ children }) {
-  const {loggedOutStatus, isLoginInStatus} = useSelector((state) => state.account);
-  // const router = useRouter();
+  const { loggedOutStatus, isLoginingStatus } = useSelector(
+    (state) => state.account
+  );
+  const navigate = useNavigate();
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -15,9 +19,12 @@ function AppLayout({ children }) {
     });
   }, []);
 
-  // if (!authState.loggedIn) {
-  //   router.push("/auth/login");
-  // } else {
+  useEffect(() => {
+    if (isLoginingStatus !== "success") {
+      navigate(Routes.signin);
+    }
+  }, []);
+
   return (
     <div className="font-Euclid in-app">
       <>
@@ -29,7 +36,6 @@ function AppLayout({ children }) {
       </>
     </div>
   );
-  // }
 }
 
 export default AppLayout;

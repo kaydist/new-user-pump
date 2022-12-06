@@ -4,6 +4,7 @@ import SignUp from "../pages/auth/sign-up";
 import Transactions from "../pages/transactions";
 import Users from "../pages/users";
 import Agents from "../pages/agents";
+import Dashboard from "../pages/dashboard";
 
 const AuthRoutes = [
   { path: Routes.signin, element: <SignIn /> },
@@ -11,6 +12,7 @@ const AuthRoutes = [
 ];
 
 const InAppRoutes = [
+  { path: Routes.dashboard, element: <Dashboard /> },
   { path: Routes.transactions, element: <Transactions /> },
 ];
 
