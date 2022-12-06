@@ -25,7 +25,7 @@ const TransactionSlice = createSlice({
       state.loadingAllTransactionsStatus = "loading";
     });
     builder.addCase(getAllTransactionsAction.fulfilled, (state, action) => {
-      state.allTransactions = action.payload.account_statement.Transactions;
+      state.allTransactions = action.payload.account_statement.Transactions.reverse();
       console.log(action.payload)
       state.loadingAllTransactionsStatus = "success";
     });

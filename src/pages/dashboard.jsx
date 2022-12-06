@@ -50,7 +50,7 @@ function Dashboard() {
                 Balance:{" "}
                 <b>
                   {`\u20A6`}
-                  {user?.balance}
+                  {allTransactions[0]?.balance || 0}
                 </b>
               </h2>
             </div>
