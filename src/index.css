@@ -1,13 +1,270 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    transition: all 0.01s ease-in-out;
+    -webkit-transition: all 0.01s ease-in-out;
+    -moz-transition: all 0.01s ease-in-out;
+    -ms-transition: all 0.01s ease-in-out;
+    -o-transition: all 0.01s ease-in-out;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply font-sans;
+  }
+
+  @font-face {
+    font-family: SF Pro Text;
+    src: url("./assets/fonts/sf-pro/SFPro-Light.ttf");
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: SF Pro Text;
+    src: url("./assets/fonts/sf-pro/SFPro-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: SF Pro Text;
+    src: url("./assets/fonts/sf-pro/SFPro-Medium.ttf");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Euclid;
+    src: url("./assets/fonts/Euclid-Circular-A/Euclid-Circular-A-Light.ttf");
+    font-weight: 300;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Euclid;
+    src: url("./assets/fonts/Euclid-Circular-A/Euclid-Circular-A-Regular.ttf");
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Euclid;
+    src: url("./assets/fonts/Euclid-Circular-A/Euclid-Circular-A-Medium.ttf");
+    font-weight: 500;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: Euclid;
+    src: url("./assets/fonts/Euclid-Circular-A/Euclid-Circular-A-SemiBold.ttf");
+    font-weight: 600;
+    font-display: swap;
+  }
+
+  input,
+  textarea select,
+  button {
+    @apply outline-0;
+  }
+
+  input[type="search"]::-webkit-search-decoration,
+  input[type="search"]::-webkit-search-cancel-button,
+  input[type="search"]::-webkit-search-results-button,
+  input[type="search"]::-webkit-search-results-decoration {
+    display: none;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  .constraint {
+    @apply container mx-auto px-5 xl:px-16 2xl:px-24;
+  }
+
+  .no-fill-text {
+    -webkit-text-stroke: 1px #9c9c9c;
+    -webkit-text-fill-color: #ffffff00;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .auth_page h4 {
+    @apply text-xl font-normal;
+  }
+  .auth_page p {
+    @apply text-sm;
+  }
+
+  /* Landing page */
+  .landing-page .nav-links {
+    @apply relative inline-block;
+  }
+
+  .landing-page h2 {
+    @apply font-medium text-2xl md:text-[1.8rem] lg:text-[2rem] xl:text-[2.625rem] text-[#333333] leading-normal lg:leading-snug;
+  }
+
+  .landing-page h3 {
+    @apply text-lg lg:text-2xl xl:text-[28px] 2xl:text-[32px];
+  }
+
+  .landing-page .btn {
+    @apply py-2.5  lg:py-3 px-12 md:px-8 xl:px-10   text-sm md:text-xs lg:text-sm font-semibold;
+  }
+
+  .giant-text {
+    @apply text-6xl sm:text-[8.5rem] lg:text-[12.5rem] leading-[1];
+  }
+
+  /* In App styles */
+
+  .in-app .page-top {
+    @apply pt-10 xl:pt-12;
+  }
+
+  .in-app .page-title {
+    @apply text-2xl xl:text-[2rem] xl:leading-[48px] font-bold;
+  }
+
+  .in-app .page-subtitle {
+    @apply text-xs xl:text-base text-[#505780];
+  }
+  .in-app .table-title {
+    @apply font-medium text-lg xl:text-xl text-[#191716];
+  }
+
+  .in-app .modal-card {
+    @apply py-6 bg-white rounded-xl;
+  }
+
+  .in-app .transction-detail-body .detail-field {
+    @apply even:col-end;
+  }
+
+  .in-app .transction-detail-body .detail-field .data {
+    @apply text-black-80 text-xs xl:text-sm font-medium;
+  }
+
+  .product-card-icon {
+    @apply text-primary;
+  }
+
+  .product-card:hover * {
+    @apply text-white;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer utilities {
+  /* Rows */
+  .inline-start {
+    @apply inline-flex items-center justify-start;
+  }
+
+  .inline-center {
+    @apply inline-flex items-center justify-center;
+  }
+
+  .inline-end {
+    @apply inline-flex items-center justify-end;
+  }
+
+  .inline-between {
+    @apply inline-flex items-center justify-between;
+  }
+
+  .inline-evenly {
+    @apply inline-flex items-center justify-evenly;
+  }
+
+  .start {
+    @apply flex items-center justify-start;
+  }
+
+  .start-start {
+    @apply flex items-start justify-start;
+  }
+
+  .center {
+    @apply flex items-center justify-center;
+  }
+
+  .end {
+    @apply flex items-center justify-end;
+  }
+
+  .between {
+    @apply flex flex-row items-center justify-between;
+  }
+
+  .between-start {
+    @apply flex flex-row items-start justify-between;
+  }
+
+  .evenly {
+    @apply flex items-center justify-evenly;
+  }
+
+  /* Cols */
+  .col-start {
+    @apply flex flex-col items-start justify-center;
+  }
+
+  .col-center {
+    @apply flex flex-col items-center justify-center;
+  }
+
+  .col-end {
+    @apply flex flex-col items-end justify-center;
+  }
+
+  .col-between {
+    @apply flex flex-col items-start justify-between;
+  }
+}
+
+/* react select */
+
+.react-select__control {
+  border-color: #ffede6 !important;
+  box-shadow: none !important;
+  border-radius: 0.75rem !important;
+}
+
+.react-select__control--is-focused {
+  border-color: #ff4500 !important;
+}
+
+.react-select__input-container {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.react-select__value-container {
+  padding: 0.625rem 1.25rem !important;
+}
+
+.react-select__option--is-focused {
+  background-color: #ffede3 !important;
+}
+
+.react-select__option--is-selected {
+  background-color: #ff4500 !important;
+}
+
+.react-select__indicator-separator {
+  display: none;
 }
