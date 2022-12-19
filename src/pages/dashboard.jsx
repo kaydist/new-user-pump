@@ -81,7 +81,7 @@ function Dashboard() {
           <div className="flex justify-between w-full">
             <div className="inline-block">Card ID: {user?.card_id}</div>
             <div className="inline-block">
-              Last Seen: {fullDateFormat(new Date)}
+              Last Seen: {fullDateFormat(new Date())}
             </div>
           </div>
         </div>
@@ -116,7 +116,9 @@ function Dashboard() {
 
                   <td className="xl:w-[18%]">{item?.description}</td>
 
-                  <td className="xl:w-[18%]">{item?.created_at}</td>
+                  <td className="xl:w-[18%]">
+                    {fullDateFormat(item?.created_at)}
+                  </td>
 
                   <td className="w-[10%]">
                     <div className="end">
