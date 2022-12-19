@@ -42,7 +42,7 @@ function Dashboard() {
       </div>
 
       <div className="mt-4">
-        <div className="card rounded-md min-h-[150px] bg-primary-soft col-between">
+        <div className="card wallet-card rounded-md min-h-[150px] bg-primary-soft col-between">
           <div className="flex justify-between w-full">
             <div className="inline-block">
               <h2 className="text-2xl">
@@ -81,7 +81,7 @@ function Dashboard() {
           <div className="flex justify-between w-full">
             <div className="inline-block">Card ID: {user?.card_id}</div>
             <div className="inline-block">
-              Last Update: {fullDateFormat(user?.card_id)}
+              Last Seen: {fullDateFormat(new Date)}
             </div>
           </div>
         </div>

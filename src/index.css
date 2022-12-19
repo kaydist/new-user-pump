@@ -204,6 +204,14 @@
       stroke-dashoffset: -124;
     }
   }
+
+
+  .wallet-card{
+    background-image: url('./assets/card-pattern.svg');
+    background-size: cover;
+    background-opacity: 0.3;
+    @apply bg-primary-soft;
+  }
   
 }
 

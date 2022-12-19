@@ -18,7 +18,7 @@ function TopUpWallet({ showTopUpModal, setShowTopUpModal }) {
 
   useMemo(() => {
     if (isDepositingStatus === "success") {
-      setShowTopUpModal(!showTopUpModal);
+      setShowTopUpModal(false);
     }
   }, [isDepositingStatus]);
 

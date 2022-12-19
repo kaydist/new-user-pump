@@ -1,4 +1,5 @@
 import React from "react";
+import AnimatedBg from "../components/animated-bg/animated-bg";
 
 function AuthLayout({ children }) {
   return (
@@ -12,6 +13,9 @@ function AuthLayout({ children }) {
           {children}
         </main>
       </>
+
+      
+      <AnimatedBg />
     </div>
   );
 }
