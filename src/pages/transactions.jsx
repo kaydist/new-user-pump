@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactionsAction } from "../store/transaction/transaction.actions";
 import { Modal, ModalBody, ModalHeader } from "../components/common/modal";
 import TopUpWallet from "./Top-up";
+import { fullDateFormat } from "../utils/formatter";
 
 function Transactions() {
   const breadcrumb = [{ title: "Transactions", link: "" }];
@@ -44,9 +45,12 @@ function Transactions() {
         <div className="space-x-3 start"></div>
 
         <div className="end space-x-3 xl:space-x-5">
-          <Button className="bg-warning-soft text-primary rounded-lg py-3" onClick={()=>{
-            setShowTopUpModal(!showTopUpModal)
-          }}>
+          <Button
+            className="bg-warning-soft text-primary rounded-lg py-3"
+            onClick={() => {
+              setShowTopUpModal(!showTopUpModal);
+            }}
+          >
             <svg
               className="w-4 h-4"
               viewBox="0 0 18 18"
@@ -88,7 +92,9 @@ function Transactions() {
 
                   <td className="xl:w-[18%]">{item?.description}</td>
 
-                  <td className="xl:w-[18%]">{item?.created_at}</td>
+                  <td className="xl:w-[18%]">
+                    {fullDateFormat(item?.created_at)}
+                  </td>
 
                   <td className="w-[10%]">
                     <div className="end">
