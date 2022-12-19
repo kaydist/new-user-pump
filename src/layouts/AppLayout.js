@@ -24,7 +24,6 @@ function AppLayout({ children }) {
       navigate(Routes.signin);
     }
   }, []);
-
   return (
     <div className="font-Euclid in-app">
       <>

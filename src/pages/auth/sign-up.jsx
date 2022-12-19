@@ -156,30 +156,7 @@ export default function SignUp() {
           </p>
         </div>
 
-        <div className="form-row mb-10">
-          <label className="block leading-[18px]">Card ID</label>
 
-          <input
-            type="text"
-            name="card_id"
-            onChange={(e) => {
-              formik.handleChange(e);
-              if (errorMessage.card_id) {
-                formik.errors.card_id = "";
-              }
-            }}
-            onBlur={formik.handleBlur}
-            value={formik.values.card_id}
-            placeholder=""
-            className="input password bg-inherit min-w-full"
-          />
-
-          <p className="form-error px-4">
-            {formik.errors.card_id &&
-              formik.touched.card_id &&
-              formik.errors.card_id}
-          </p>
-        </div>
 
         <div className="form-row w-full">
           <label className="text-center block mx-auto w-full">
