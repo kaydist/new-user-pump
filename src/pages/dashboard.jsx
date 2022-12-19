@@ -33,7 +33,6 @@ function Dashboard() {
 
   const breadcrumb = [{ title: "Welcome", link: "" }];
 
-  console.log(user);
   return (
     <div>
       <Topbar breadcrumb={breadcrumb} />

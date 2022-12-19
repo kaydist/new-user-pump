@@ -6,12 +6,22 @@ import { Modal, ModalBody, ModalHeader } from "../components/common/modal";
 import Spinner from "../components/common/spinner";
 import { depositAction } from "../store/transaction/transaction.actions";
 import { checkLength, removeSpecialCharacters } from "../utils/formatter";
+import { payWithPaystack } from "../utils/paystack-script";
+import { useMemo } from "react";
 
 function TopUpWallet({ showTopUpModal, setShowTopUpModal }) {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.account);
   const { depositErrorMessage, isDepositingStatus } = useSelector(
     (state) => state.transactions
   );
+
+  useMemo(() => {
+    if (isDepositingStatus === "success") {
+      setShowTopUpModal(!showTopUpModal);
+    }
+  }, [isDepositingStatus]);
+
   return (
     <Modal state={showTopUpModal}>
       <div className="py-6 bg-white rounded-xl">
@@ -37,11 +47,17 @@ function TopUpWallet({ showTopUpModal, setShowTopUpModal }) {
               return errors;
             }}
             onSubmit={async (values, { setSubmitting, setErrors }) => {
-              dispatch(
-                depositAction({
-                  deposit: Number(values.deposit),
-                })
-              );
+              payWithPaystack({
+                email: user?.email,
+                amount: Number(values.deposit),
+                onSuccess: () => {
+                  dispatch(
+                    depositAction({
+                      deposit: Number(values.deposit),
+                    })
+                  );
+                },
+              });
             }}
           >
             {(formik) => (
