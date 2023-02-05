@@ -91,9 +91,9 @@ function Dashboard() {
         <h2 className="table-title">Recent Transactions</h2>
       </div>
 
-      <div className="w-full pt-10">
+      <div className="w-full pt-4 md:pt-10">
         <Table
-          className="w-full"
+          className="w-full hidden md:block"
           isLoading={loadingAllTransactionsStatus === "loading"}
         >
           <TableHeading
@@ -134,6 +134,51 @@ function Dashboard() {
             })}
           </TableBody>
         </Table>
+
+        <div className="p-4 card md:hidden">
+          <div className="flex flex-col gap-2">
+            {allTransactions.slice(0, 6).map((item, idx) => {
+              return (
+                <div className="border-b py-3 flex flex-col gap-2" key={idx}>
+                  <div>
+                    <span>Amount: </span>
+                    <span>
+                      {`\u20A6`} {item?.amount}{" "}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span>Balance: </span>
+                    <span>
+                      {`\u20A6`} {item?.balance}{" "}
+                    </span>
+                  </div>
+
+                  <div>
+                    <span>Description: </span>
+                    <span>{item?.description} </span>
+                  </div>
+
+                  <div>
+                    <span>Created At: </span>
+                    <span>{fullDateFormat(item?.created_at)}</span>
+                  </div>
+
+                  <div>
+                    <span>Status: </span>
+                    <span>
+                      <StatusLabel
+                        className={`bg-success-soft text-success-dark`}
+                      >
+                        Successful
+                      </StatusLabel>
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
 
       <TopUpWallet

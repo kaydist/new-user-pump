@@ -29,7 +29,7 @@ function AppLayout({ children }) {
       <>
         <Sidebar />
 
-        <div className="ml-52 xl:ml-64 px-7 xl:px-10 pb-4 xl:pb-6 min-h-screen bg-body-bg bg-[#FAFAFA] text-sm xl:text-base">
+        <div className="md:ml-52 xl:ml-64 px-7 xl:px-10 pb-4 xl:pb-6 min-h-screen bg-body-bg bg-[#FAFAFA] text-sm xl:text-base">
           {children}
         </div>
       </>
