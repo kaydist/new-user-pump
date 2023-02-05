@@ -29,7 +29,7 @@ export default function SignUp() {
   // }
 
   const formik = useFormik({
-    initialValues: { email: "", password: "", phone_number: "", card_id: '' },
+    initialValues: { email: "", password: "", phone_number: "", card_id: "" },
 
     validate: (values) => {
       const errors = {};
@@ -156,7 +156,26 @@ export default function SignUp() {
           </p>
         </div>
 
+        <div className="form-row">
+          <label className="block leading-[18px]">Card ID</label>
 
+          <div className="between input-container w-full">
+            <input
+              name="card_id"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.card_id}
+              placeholder="••••••••"
+              className="input bg-inherit w-full border-0 focus:border-0"
+            />
+          </div>
+
+          <p className="form-error">
+            {formik.errors.card_id &&
+              formik.touched.card_id &&
+              formik.errors.card_id}
+          </p>
+        </div>
 
         <div className="form-row w-full">
           <label className="text-center block mx-auto w-full">
