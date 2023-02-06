@@ -6,15 +6,17 @@ const headers = {
   timeout: 15000,
 };
 
+const getToken = () =>
+  sessionStorage.getItem("user-pump-token")
+    ? JSON.parse(sessionStorage.getItem("user-pump-token"))
+    : null;
+
 const instance = axios.create({
   headers,
 });
 
 instance.interceptors.request.use(function (config) {
-  const auth = JSON?.parse(sessionStorage.getItem("persist:account") || "{}");
-  const token = `Bearer ${
-    Object.keys(auth).length > 0 ? JSON.parse(auth.token) : ""
-  }`;
+  const token = `Bearer ${getToken()}`;
   config.headers.Authorization = token;
 
   return config;

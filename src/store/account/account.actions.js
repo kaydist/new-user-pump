@@ -7,6 +7,8 @@ export const loginAccountAction = createAsyncThunk(
   async (values, ThunkApi) => {
     try {
       const res = await axios.post(loginUrl, values);
+
+      sessionStorage.setItem("user-pump-token", JSON.stringify(res.data.token));
       return res.data;
     } catch (error) {
       const message = error.response.data?.message;
