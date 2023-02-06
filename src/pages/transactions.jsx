@@ -6,13 +6,12 @@ import {
   TableHeading,
   TableBody,
   TableRow,
-} from "../components/common/table-components";
+} from "../components/common/table/table-components";
 import Button from "../components/common/button";
-import Table from "../components/common/table";
+import { Table, MobileTable } from "../components/common/table/table";
 import StatusLabel from "../components/common/status-label";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactionsAction } from "../store/transaction/transaction.actions";
-import { Modal, ModalBody, ModalHeader } from "../components/common/modal";
 import TopUpWallet from "./Top-up";
 import { fullDateFormat } from "../utils/formatter";
 
@@ -67,9 +66,9 @@ function Transactions() {
         </div>
       </div>
 
-      <div className="w-full pt-10">
+      <div className="w-full pt-4 md:pt-10">
         <Table
-          className="w-full"
+          className="w-full hidden md:block"
           isLoading={loadingAllTransactionsStatus === "loading"}
         >
           <TableHeading
@@ -110,6 +109,52 @@ function Transactions() {
             })}
           </TableBody>
         </Table>
+
+        <MobileTable
+          className="p-4 card md:hidden"
+          isLoading={loadingAllTransactionsStatus === "loading"}
+        >
+          {allTransactions.map((item, idx) => {
+            return (
+              <div className="border-b py-3 flex flex-col gap-2" key={idx}>
+                <div>
+                  <span>Amount: </span>
+                  <span>
+                    {`\u20A6`} {item?.amount}{" "}
+                  </span>
+                </div>
+
+                <div>
+                  <span>Balance: </span>
+                  <span>
+                    {`\u20A6`} {item?.balance}{" "}
+                  </span>
+                </div>
+
+                <div>
+                  <span>Description: </span>
+                  <span>{item?.description} </span>
+                </div>
+
+                <div>
+                  <span>Created At: </span>
+                  <span>{fullDateFormat(item?.created_at)}</span>
+                </div>
+
+                <div>
+                  <span>Status: </span>
+                  <span>
+                    <StatusLabel
+                      className={`bg-success-soft text-success-dark`}
+                    >
+                      Successful
+                    </StatusLabel>
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </MobileTable>
       </div>
 
       <TopUpWallet

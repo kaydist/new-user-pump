@@ -6,13 +6,12 @@ import {
   TableHeading,
   TableBody,
   TableRow,
-} from "../components/common/table-components";
+} from "../components/common/table/table-components";
 import Button from "../components/common/button";
-import Table from "../components/common/table";
+import { Table, MobileTable } from "../components/common/table/table";
 import StatusLabel from "../components/common/status-label";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactionsAction } from "../store/transaction/transaction.actions";
-import { Modal, ModalBody, ModalHeader } from "../components/common/modal";
 import TopUpWallet from "./Top-up";
 import { fullDateFormat } from "../utils/formatter";
 
@@ -56,7 +55,7 @@ function Dashboard() {
             <div className="inline-block">
               <div className="end space-x-3 xl:space-x-5">
                 <Button
-                  className="bg-warning-soft text-primary rounded-lg py-3"
+                  className="bg-warning-soft text-primary rounded-lg md:py-3"
                   onClick={() => {
                     setShowTopUpModal(!showTopUpModal);
                   }}
@@ -80,7 +79,7 @@ function Dashboard() {
 
           <div className="flex justify-between w-full">
             <div className="inline-block">Card ID: {user?.card_id}</div>
-            <div className="inline-block">
+            <div className="inline-block text-right">
               Last Seen: {fullDateFormat(new Date())}
             </div>
           </div>
@@ -135,50 +134,51 @@ function Dashboard() {
           </TableBody>
         </Table>
 
-        <div className="p-4 card md:hidden">
-          <div className="flex flex-col gap-2">
-            {allTransactions.slice(0, 6).map((item, idx) => {
-              return (
-                <div className="border-b py-3 flex flex-col gap-2" key={idx}>
-                  <div>
-                    <span>Amount: </span>
-                    <span>
-                      {`\u20A6`} {item?.amount}{" "}
-                    </span>
-                  </div>
-
-                  <div>
-                    <span>Balance: </span>
-                    <span>
-                      {`\u20A6`} {item?.balance}{" "}
-                    </span>
-                  </div>
-
-                  <div>
-                    <span>Description: </span>
-                    <span>{item?.description} </span>
-                  </div>
-
-                  <div>
-                    <span>Created At: </span>
-                    <span>{fullDateFormat(item?.created_at)}</span>
-                  </div>
-
-                  <div>
-                    <span>Status: </span>
-                    <span>
-                      <StatusLabel
-                        className={`bg-success-soft text-success-dark`}
-                      >
-                        Successful
-                      </StatusLabel>
-                    </span>
-                  </div>
+        <MobileTable
+          className="p-4 card md:hidden"
+          isLoading={loadingAllTransactionsStatus === "loading"}
+        >
+          {allTransactions.slice(0, 6).map((item, idx) => {
+            return (
+              <div className="border-b py-3 flex flex-col gap-2" key={idx}>
+                <div>
+                  <span>Amount: </span>
+                  <span>
+                    {`\u20A6`} {item?.amount}{" "}
+                  </span>
                 </div>
-              );
-            })}
-          </div>
-        </div>
+
+                <div>
+                  <span>Balance: </span>
+                  <span>
+                    {`\u20A6`} {item?.balance}{" "}
+                  </span>
+                </div>
+
+                <div>
+                  <span>Description: </span>
+                  <span>{item?.description} </span>
+                </div>
+
+                <div>
+                  <span>Created At: </span>
+                  <span>{fullDateFormat(item?.created_at)}</span>
+                </div>
+
+                <div>
+                  <span>Status: </span>
+                  <span>
+                    <StatusLabel
+                      className={`bg-success-soft text-success-dark`}
+                    >
+                      Successful
+                    </StatusLabel>
+                  </span>
+                </div>
+              </div>
+            );
+          })}
+        </MobileTable>
       </div>
 
       <TopUpWallet
