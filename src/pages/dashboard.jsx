@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 //components
 import Topbar from "../layouts/common/topbar";
-import SearchBar from "../layouts/common/search-bar";
 import {
   TableHeading,
   TableBody,
@@ -12,7 +11,7 @@ import { Table, MobileTable } from "../components/common/table/table";
 import StatusLabel from "../components/common/status-label";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactionsAction } from "../store/transaction/transaction.actions";
-import TopUpWallet from "./Top-up";
+import TopUpWallet from "../components/Top-up";
 import { fullDateFormat } from "../utils/formatter";
 
 function Dashboard() {

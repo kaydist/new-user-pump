@@ -1,9 +1,9 @@
 import { Formik } from "formik";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Button from "../components/common/button";
-import { Modal, ModalBody, ModalHeader } from "../components/common/modal";
-import Spinner from "../components/common/spinner";
+import Button from "./common/button";
+import { Modal, ModalBody, ModalHeader } from "./common/modal";
+import Spinner from "./common/spinner";
 import { depositAction } from "../store/transaction/transaction.actions";
 import { checkLength, removeSpecialCharacters } from "../utils/formatter";
 import { payWithPaystack } from "../utils/paystack-script";

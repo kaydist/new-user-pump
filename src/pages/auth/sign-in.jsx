@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 //components
@@ -12,7 +12,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginAccountAction } from "../../store/account/account.actions";
 import { Routes } from "../../routes/Routes";
 import { resetAccount } from "../../store/account/account.reducer";
-import PageLoading from "../../components/common/page-loading";
 
 export default function SignIn() {
   const dispatch = useDispatch();
