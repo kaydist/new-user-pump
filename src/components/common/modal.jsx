@@ -18,7 +18,7 @@ function Modal({ ref, state, close, children }) {
   return (
     <div className={showClass} ref={ref} id="modal">
       <div className="w-full absolute top-1/2 left-1/2 -translate-y-2/4 -translate-x-2/4">
-        <div className="mx-auto w-[24rem] scale-100 transition-all" id="modal-content">
+        <div className="mx-auto w-[18rem] md:w-[24rem] scale-100 transition-all" id="modal-content">
           {children}
         </div>
       </div>

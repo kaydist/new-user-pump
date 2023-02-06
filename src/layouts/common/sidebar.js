@@ -10,28 +10,27 @@ import FillUserAltIcon from "../../assets/icons/fill-user-alt";
 import PeopleAltIcon from "../../assets/icons/people-alt";
 import { Routes } from "../../routes/Routes";
 
+export const SidebarLinks = [
+  { icon: <DashboardIcon />, title: "Home", link: Routes.dashboard },
+  {
+    icon: <TransactionIcon />,
+    title: "Transaction",
+    link: Routes.transactions,
+  },
+];
+
 function Sidebar() {
   const navigate = useNavigate();
 
   const activeLink = window.location.pathname;
-
-  const SidebarLinks = [
-    { icon: <DashboardIcon />, title: "Home", link: Routes.dashboard },
-    {
-      icon: <TransactionIcon />,
-      title: "Transaction",
-      link: Routes.transactions,
-    },
-  ];
 
   const changeRoute = (title, link) => {
     navigate(link);
   };
 
   return (
-    <div className="w-52 xl:w-64 h-screen fixed z-20">
-      <div className="py-4 mb-8 xl:mb-10 xl:py-6 px-8 xl:px-10 start w-[140px] xl:w-[180px] h-auto">
-      </div>
+    <div className="w-52 xl:w-64 h-screen z-20 hidden md:block fixed">
+      <div className="py-4 mb-8 xl:mb-10 xl:py-6 px-8 xl:px-10 start w-[140px] xl:w-[180px] h-auto"></div>
 
       <ul className="w-full  space-y-7 xl:space-y-8 px-7 xl:px-9">
         {SidebarLinks.map((item, idx) => {

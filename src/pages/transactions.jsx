@@ -36,14 +36,6 @@ function Transactions() {
         <h2 className="table-title">Transactions</h2>
 
         <div className="end space-x-3 xl:space-x-5">
-          <SearchBar className="w-64 xl:w-80" />
-        </div>
-      </div>
-
-      <div className="between pt-8">
-        <div className="space-x-3 start"></div>
-
-        <div className="end space-x-3 xl:space-x-5">
           <Button
             className="bg-warning-soft text-primary rounded-lg py-3"
             onClick={() => {

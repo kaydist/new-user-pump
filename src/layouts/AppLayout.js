@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Routes } from "../routes/Routes";
 import Sidebar from "./common/sidebar";
+import MobileFloatbar from "./common/mobile-floatbar";
 
 function AppLayout({ children }) {
   const { loggedOutStatus, isLoginingStatus } = useSelector(
@@ -28,6 +29,8 @@ function AppLayout({ children }) {
     <div className="font-Euclid in-app">
       <>
         <Sidebar />
+
+        <MobileFloatbar />
 
         <div className="md:ml-52 xl:ml-64 px-7 xl:px-10 pb-4 xl:pb-6 min-h-screen bg-body-bg bg-[#FAFAFA] text-sm xl:text-base">
           {children}

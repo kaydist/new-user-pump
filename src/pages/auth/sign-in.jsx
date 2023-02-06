@@ -12,7 +12,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { loginAccountAction } from "../../store/account/account.actions";
 import { Routes } from "../../routes/Routes";
 import { resetAccount } from "../../store/account/account.reducer";
-
+import PageLoading from "../../components/common/page-loading";
 
 export default function SignIn() {
   const dispatch = useDispatch();
@@ -54,22 +54,13 @@ export default function SignIn() {
     },
   });
 
-
-  if (isLoginingStatus === "success") {
-    navigate(Routes.dashboard);
-  }
-
   useEffect(() => {
     dispatch(resetAccount());
   }, []);
 
-  // useMemo(() => {
-  //   (errorMessage?.email && (formik.errors.email = errorMessage?.email[0])) ||
-  //     (errorMessage?.password &&
-  //       (formik.errors.password = errorMessage?.password[0])) ||
-  //     (errorMessage !== "Ok" && (formik.errors.password = errorMessage));
-  //   console.log(errorMessage);
-  // }, [errorMessage]);
+  if (isLoginingStatus === "success") {
+    navigate(Routes.dashboard);
+  }
 
   return (
     <div className="auth-page space-y-10 w-full sm:w-[20.4rem]">
