@@ -1,4 +1,4 @@
-const baseUrl = "https://fuel-dispenser-api.herokuapp.com";
+const baseUrl = "https://fuel-api.herokuapp.com";
 const role = "user";
 
 export const loginUrl = `${baseUrl}/v1/pump/${role}/login`;
