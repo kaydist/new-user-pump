@@ -12,7 +12,7 @@ import StatusLabel from "../components/common/status-label";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllTransactionsAction } from "../store/transaction/transaction.actions";
 import TopUpWallet from "../components/Top-up";
-import { fullDateFormat } from "../utils/formatter";
+import { currencyFormat, fullDateFormat } from "../utils/formatter";
 
 function Dashboard() {
   const [showTopUpModal, setShowTopUpModal] = useState(false);
@@ -45,10 +45,7 @@ function Dashboard() {
             <div className="inline-block">
               <h2 className="text-2xl">
                 Balance:{" "}
-                <b>
-                  {`\u20A6`}
-                  {allTransactions[0]?.balance || 0}
-                </b>
+                <b>{currencyFormat(allTransactions[0]?.balance || 0)}</b>
               </h2>
             </div>
             <div className="inline-block">
@@ -104,12 +101,10 @@ function Dashboard() {
             {allTransactions.slice(0, 6).map((item, idx) => {
               return (
                 <TableRow key={idx}>
-                  <td className="xl:w-[12%]">
-                    {`\u20A6`} {item?.amount}
-                  </td>
+                  <td className="xl:w-[12%]">{currencyFormat(item?.amount)}</td>
 
                   <td className="xl:w-[12%]">
-                    {`\u20A6`} {item?.balance}
+                    {currencyFormat(item?.balance)}
                   </td>
 
                   <td className="xl:w-[18%]">{item?.description}</td>
@@ -142,16 +137,12 @@ function Dashboard() {
               <div className="border-b py-3 flex flex-col gap-2" key={idx}>
                 <div>
                   <span>Amount: </span>
-                  <span>
-                    {`\u20A6`} {item?.amount}{" "}
-                  </span>
+                  <span>{currencyFormat(item?.amount)} </span>
                 </div>
 
                 <div>
                   <span>Balance: </span>
-                  <span>
-                    {`\u20A6`} {item?.balance}{" "}
-                  </span>
+                  <span>{currencyFormat(item?.balance)} </span>
                 </div>
 
                 <div>

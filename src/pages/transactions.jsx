@@ -72,12 +72,10 @@ function Transactions() {
             {allTransactions.map((item, idx) => {
               return (
                 <TableRow key={idx}>
-                  <td className="xl:w-[12%]">
-                    {`\u20A6`} {item?.amount}
-                  </td>
+                  <td className="xl:w-[12%]">{currencyFormat(item?.amount)}</td>
 
                   <td className="xl:w-[12%]">
-                    {`\u20A6`} {item?.balance}
+                    {currencyFormat(item?.balance)}
                   </td>
 
                   <td className="xl:w-[18%]">{item?.description}</td>
@@ -110,16 +108,12 @@ function Transactions() {
               <div className="border-b py-3 flex flex-col gap-2" key={idx}>
                 <div>
                   <span>Amount: </span>
-                  <span>
-                    {`\u20A6`} {item?.amount}{" "}
-                  </span>
+                  <span>{currencyFormat(item?.amount)} </span>
                 </div>
 
                 <div>
                   <span>Balance: </span>
-                  <span>
-                    {`\u20A6`} {item?.balance}{" "}
-                  </span>
+                  <span>{currencyFormat(item?.balance)} </span>
                 </div>
 
                 <div>
